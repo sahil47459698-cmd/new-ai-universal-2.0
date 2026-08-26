@@ -1,0 +1,254 @@
+/* ============================================================
+   AI Universal Health Dashboard — by Sahil
+   Clean professional blue-white theme (same layout version)
+=========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --bg: linear-gradient(180deg, #e8f6ff, #ffffff);
+  --card: #ffffff;
+  --accent: #0b84ff;
+  --accent2: #00c3a3;
+  --muted: #6b7280;
+  --text: #1f2937;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --radius: 14px;
+}
+
+/* ---------- RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- TOP BAR ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card);
+  padding: 12px 24px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand .logo {
+  font-size: 32px;
+}
+
+.brand .titles h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.brand .subtitle {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.profile-short {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 0 1px #e5e7eb;
+  transition: 0.3s;
+}
+.profile-short:hover { background: #f0f7ff; }
+
+.profile-short .avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.p-info {
+  line-height: 1.2;
+}
+.p-name {
+  font-weight: 600;
+}
+.p-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ---------- GRID LAYOUT ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 340px;
+  gap: 20px;
+  padding: 20px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- CARDS ---------- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+
+.card-head {
+  margin-bottom: 10px;
+}
+
+.card-head h2, .card h3 {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- PROFILE CARD ---------- */
+.profile-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.avatar-lg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+}
+
+.profile-data .name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.profile-data .meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- HEALTH SCORE & FITNESS LEVEL ---------- */
+#healthScore {
+  color: #0b84ff;
+  font-weight: 600;
+  background: rgba(11, 132, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+#fitnessLevel {
+  color: #00b894;
+  font-weight: 600;
+  background: rgba(0, 184, 148, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* ---------- INPUTS & BUTTONS ---------- */
+input, select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  width: 100%;
+  outline: none;
+}
+input:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(11,132,255,0.2);
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  transition: 0.25s;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn.primary:hover { background: #006fe0; }
+
+.btn.ghost {
+  background: #f8fafc;
+  color: var(--text);
+  border: 1px solid #d1d5db;
+}
+.btn.ghost:hover { background: #edf3f9; }
+
+.btn.small { padding: 6px 10px; font-size: 0.85rem; }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gap { gap: 8px; }
+
+.info {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ---------- CAMERA ---------- */
+.photoPreview {
+  background: #f3f4f6;
+  text-align: center;
+  padding: 8px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.finger {
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.finger:hover { transform: scale(1.1); }
+
+/* ---------- CHAT ----------*/ 
+
+.btn.danger {
+  background: #ff4b4b;
+  color: #fff;
+}
+.btn.danger:hover {
+  background: #e33b3b;
+}
+

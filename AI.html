@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Universal Health Dashboard — User</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="AI.css" />
+    <link rel="stylesheet" href="AI.chatbotversion.css">
+
+    <!-- ✅ Add Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Scripts -->
+    <script defer src="AI.js"></script>
+    <script defer src="AI.chatbotversion.js"></script>
+    <script defer src="AIlogin.js"></script>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">🧠</div>
+            <div class="titles">
+                <h1>AI Universal Health & Fitness Assistant</h1>
+                <div class="subtitle">Smart Dashboard • Demo • Not a medical replacement</div>
+            </div>
+
+            <div class="profile-short" title="Profile">
+                <img class="avatar" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User" />
+                <div class="p-info">
+                    <div class="p-name">User</div>
+                    <div class="p-meta">20 yrs • Male</div>
+                </div>
+            </div>
+
+            <div class="login-box">
+                <a href="AILogin.html" class="btn-login">Log-in</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN GRID -->
+    <main class="grid">
+
+        <!-- LEFT COLUMN -->
+        <aside class="col profile-card">
+            <div class="card">
+                <div class="card-head">
+                    <h2>Profile</h2>
+                    <div class="muted">Fixed user (session)</div>
+                </div>
+                <div class="profile-row">
+                    <img class="avatar-lg" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User" />
+                    <div class="profile-data">
+                        <div class="name">User</div>
+                        <div class="meta">Age: <b>20</b> • Gender: <b>Male</b></div>
+                        <div class="meta">Height: <b id="profileHeight">159</b> cm • Weight: <b id="profileWeight">45</b> kg</div>
+                        <div class="meta">Quick BMI: <b id="profileBMI">—</b></div>
+                        <div class="meta">Health Score: <b id="healthScore">—</b></div>
+                        <div class="meta">Fitness Level: <b id="fitnessLevel">—</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick BMI -->
+            <div class="card">
+                <h3>Quick BMI (anyone)</h3>
+                <div class="col gap">
+                    <input id="quickName" placeholder="Full Name" type="text" />
+                    <input id="quickAge" placeholder="Age (yrs)" type="number" />
+                    <select id="quickGender">
+            <option value="" disabled selected>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+                    <input id="quickHeight" placeholder="Height (cm)" type="number" />
+                    <input id="quickWeight" placeholder="Weight (kg)" type="number" />
+                </div>
+                <div class="row">
+                    <button id="btnQuickBMI" class="btn primary">Check BMI</button>
+                    <button id="btnQuickClear" class="btn ghost">Clear</button>
+                </div>
+                <div id="quickResult" class="info">Enter details and press Check BMI</div>
+            </div>
+
+            <!-- Camera + Fingerprint -->
+            <div class="card">
+                <h3>Camera & Fingerprint (demo)</h3>
+                <video id="camera" autoplay muted playsinline style="width:100%; height:160px; background:#111; border-radius:8px;"></video>
+                <div class="row gap">
+                    <button id="startCam" class="btn primary small">Start Camera</button>
+                    <button id="stopCam" class="btn danger small">Stop Camera</button>
+                    <button id="snap" class="btn ghost small">Capture</button>
+                </div>
+                <div id="photoPreview" class="photoPreview">No photo</div>
+                <hr />
+                <div style="text-align:center;">
+                    <div id="finger" class="finger">🔒</div>
+                    <div class="muted">Click to scan fingerprint (demo)</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MIDDLE COLUMN -->
+        <section class="col middle">
+            <div class="card">
+                <div class="card-head">
+                    <h2>Daily Routine & Diet (Role-based)</h2>
+                    <div class="muted">Select role & gender to view tailored routine</div>
+                </div>
+                <div class="row controls">
+                    <select id="roleSelect">
+            <option value="common">Common Person</option>
+            <option value="student">Student</option>
+            <option value="sports">Sports Person</option>
+            <option value="army">Army</option>
+            <option value="senior">Senior</option>
+          </select>
+                    <select id="genderSelect"><option value="male">Male</option><option value="female">Female</option></select>
+                    <button id="btnLoadRoutine" class="btn primary small">Load Routine</button>
+                </div>
+                <div id="routineArea" class="routineArea"></div>
+            </div>
+
+            <div class="card">
+                <h2>Health Chart</h2>
+                <div class="muted">BMI visual (profile or last checked)</div>
+                <canvas id="chartBMI" style="max-width:100%; height:220px;"></canvas>
+            </div>
+        </section>
+
+        <!-- RIGHT COLUMN: Chatbot + Map -->
+        <aside class="col right">
+            <div class="card chatbot-container">
+                <div class="robot-area">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="AI Robot" class="robot-logo" />
+                    <h2 class="robot-name">AI Health Assistant 🤖</h2>
+                    <div class="muted">Your smart health & fitness helper</div>
+                </div>
+
+                <div id="chatBox" class="chat-box">
+                    <div class="bubble bot">🤖 Hi User! Tell me your symptoms or ask about diet, fitness, or BMI.</div>
+                </div>
+
+                <div class="chat-input-area">
+                    <input id="chatInput" type="text" placeholder="Type or say something..." />
+                    <button id="voiceChat">🎤</button>
+                    <button id="sendChat">Send</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Nearby Hospitals</h3>
+                <iframe src="https://www.google.com/maps?q=Srinagar+Garhwal+Uttarakhand&output=embed" style="width:100%; height:220px; border:0; border-radius:8px;">
+</iframe> </div>
+        </aside>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div>© 2025 • AI Universal Health & Fitness Assistant • Demo by Sahil</div>
+        <div class="muted small">Chatbot info is for demo only. For serious symptoms consult a doctor.</div>
+    </footer>
+
+</body>
+
+</html>
